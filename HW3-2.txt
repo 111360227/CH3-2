@@ -1,0 +1,180 @@
+5.28
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    char upper,lower,a;
+    cout<<"請輸入大寫OR小寫字母";
+    cin>>a;
+    if(a<91)
+    {
+        upper=a;
+        lower=upper+32;
+        cout<<upper<<"的小寫是"<<lower; 
+    }
+    else
+    {
+        lower=a;
+        upper=lower-32;
+        cout<<lower<<"的大寫是"<<upper;
+    }
+    
+    
+    
+    return 0;
+}
+
+
+
+
+
+
+
+5.29
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int a,b,r,M=0,N=0,m=0;
+    cout<<"輸入兩個數字";
+    cin>>a>>b;
+    if(a>b)
+    {
+        M=a;
+        N=b;
+        while(b!=0)
+        {
+            r=a%b;
+            a=b;
+            b=r;
+        }
+        m=(M*N)/a;
+        cout<<"最小公倍數"<<m;
+    }
+    if(a<b)
+    {
+        M=b;
+        N=a;
+        while(a!=0)
+        {
+            r=b%a;
+            b=a;
+            a=r;
+        }
+        m=(M*N)/b;
+        cout<<"最小公倍數"<<m;
+    }
+    
+    
+    return 0;
+}
+
+
+
+
+
+
+
+5.34
+
+#include <iostream>
+using namespace std;
+
+
+int power(int a,int b)
+{
+    if(b==1)
+    return a; 
+    if(b==0)
+    return 1;
+    else 
+    return(a*power(a, b-1));
+
+}
+
+int main()
+{
+    int i,j;
+    cout<<"輸入底數";
+    cin>>i;
+    cout<<"輸入指數";
+    cin>>j;
+    cout<<i<<"^"<<j<<"="<<power(i,j);
+    
+}
+
+
+
+
+
+
+
+
+5.35
+
+#include<iostream>
+using namespace std;
+
+unsigned long f[100];
+
+int k(int a)
+{
+    
+    for(int i=3 ; i<=a ; i++ )
+    {
+        f[i] = f[i-1] + f[i-2];
+    }
+   return f[a];
+}
+
+int main()
+{
+   
+    int b;
+    f[1] = 1;
+    f[2] = 1;
+    cout<<"請輸入要算到第幾個費式數列";
+    cin>>b;
+    cout<<k(b);
+    
+    return 0;
+}
+
+
+
+
+
+
+
+5.36
+
+#include <iostream>
+using namespace std;
+int step=0;
+
+void hanoi(int n, char A, char B, char C){
+    if(n == 1){
+        cout << A << " to " << C << '\n';
+        step++;
+    }
+    else{
+        hanoi(n-1, A, C, B);
+        hanoi(1, A, B, C);
+        hanoi(n-1, B, A, C);
+    }
+}
+int main(){
+    int n;
+    cout<<"輸入有幾個盤子要移動";
+    cin >> n;
+    hanoi(n, 'A', 'B', 'C');
+    cout << "共要使用"<<step<<"個步驟" << '\n';
+}
+    
+    
